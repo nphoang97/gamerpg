@@ -1,5 +1,7 @@
 package game.main;
 
-public class BoardGUI {
+import javax.swing.JComponent;
 
+public class BoardGUI extends JComponent {
+	
 }
