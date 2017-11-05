@@ -1,9 +1,13 @@
 package game.object;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class Animation {
+import javax.swing.JFrame;
+
+public class Animation extends JFrame
+{
 	private int fps;
 	private ArrayList<BufferedImage>  img;
 	private int cur;
@@ -20,11 +24,13 @@ public class Animation {
 		img.add(i);
 	}
 	
-	public BufferedImage show() {
+	public BufferedImage showImg() {
 		count ++;
 		if(count == Math.round(1000 / (4 * fps)))
 			cur = (cur + 1) / img.size();
 		return img.get(cur);
-		
 	}
+	
 }
+
+

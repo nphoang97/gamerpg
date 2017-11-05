@@ -1,102 +1,63 @@
 package game.main;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
-public class Window extends JFrame{
-	Board board;
-	BoardGUI boardGui;
-	Button start;
-	Button exit;
-	
+public class Window extends JFrame implements ActionListener{
+	private Board board;
 	public Window() {
-		
-		iniWindow();
-		prepareGUI();
-		iniEvent();
-	}
-	
-	public void iniWindow() {
-		try {
-			start = new Button(ImageIO.read(new File("img/start.png")), new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					board = new Board();
-					boardGui = new BoardGUI();
-				}
-			});
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		start.setLocation(600, 0);
-		
-		try {
-			exit = new Button(ImageIO.read(new File("img/end.png")), new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					System.exit(-1);
-				}
-			});
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		exit.setLocation(600, 300);
-	}
-	
-	public void prepareGUI() {
-		setSize(800, 605);
-		setResizable(false);
-		setLayout(null);
-		setVisible(true);
-		add(exit);
-		add(start);
-	}
-	
-	public void iniEvent() {
-		addKeyListener(new KeyAdapter() {
+		getContentPane().addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				
 			}
 		});
-		
-		addActionListener(new ActionAdapter() {
-			@Override
+		Timer time = new Timer(40, this);
+		time.start();
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		getContentPane().setLayout(null);
+		setSize(800, 600);
+		JButton btnNewButton = new JButton("Start");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 			}
 		});
+		btnNewButton.setBounds(664, 81, 88, 37);
+		getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Pause");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(664, 201, 88, 37);
+		getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Exit");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_2.setBounds(664, 295, 88, 37);
+		getContentPane().add(btnNewButton_2);
+	}
+
+	public void intiStart() {
 	}
 	
-	public static void main(String[] args) {
-		new Window();
+	public void intiLoad() {
+		
 	}
-	
-	public void paintComponent(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 1000, 1000);
-	}
-}
-
-class ActionAdapter implements ActionListener {
-
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
 }
